@@ -1,0 +1,13 @@
+{% macro camposNuevos(field) %}
+    <div>
+        <label>{{ field.label }}</label>
+        <div>{{ field() }}</div>  {# Call the field directly to render it #}
+        {% if field.errors %}
+            <ul>
+                {% for error in field.errors %}
+                    <li style="color:red">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endmacro %}
