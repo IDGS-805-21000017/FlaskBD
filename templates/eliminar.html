@@ -2,12 +2,17 @@
 
 {% block content %}
 <div class="flex justify-center items-center min-h-screen">
-    <a href="/" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{ url_for('static', filename='img/estudiante.png') }}" alt="Estudiante">
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{nombre}} {{apellido}}</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{email}}</p>
+    <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 text-center">
+        <h2 class="text-xl font-bold mb-4">¿Quieres eliminar a {{ usuario.nombre }} {{ usuario.apaterno }}?</h2>
+
+        <div class="flex justify-center space-x-4">
+            <a href="{{ url_for('eliminar', id=usuario.id, confirmed='1') }}" class="bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700">
+                Sí, eliminar
+            </a>
+            <a href="{{ url_for('eliminar', id=usuario.id, confirmed='0') }}" class="bg-gray-500 text-white px-5 py-2 rounded-lg hover:bg-gray-600">
+                No, cancelar
+            </a>
         </div>
-    </a>
+    </div>
 </div>
 {% endblock %}

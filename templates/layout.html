@@ -7,6 +7,14 @@
     <title>{% block title %}Mi Aplicación{% endblock %}</title>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
 
     <!-- Navbar -->
     <nav class="bg-white border-gray-200 px-4 py-3 dark:bg-gray-900">
